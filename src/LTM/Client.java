@@ -82,6 +82,7 @@ public class Client extends JFrame implements ActionListener, KeyListener, Runna
         jEditorPane = new JEditorPane();
         jEditorPane.setContentType("text/html");
         jEditorPane.setEnabled(false);
+        jEditorPane.setDisabledTextColor(Color.BLACK);
         jScrollPane = new JScrollPane(jEditorPane);
         setDefaultValuesGB();// default values for all GridBagConstraints
         addGB(new JScrollPane(jScrollPane), 1, 4, gridwidth, gridheight, BOTH, 1.0, 1.0, anchor, insetsText);

@@ -22,12 +22,8 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 
-/**
- * An example to show how we can create a dynamic chart.
- */
 public class DynamicLineAndTimeSeriesChart extends JPanel implements ActionListener {
 
-    /** The time series data. */
     private TimeSeries cpuSeries;
     private TimeSeries ramSeries;
 
@@ -39,14 +35,8 @@ public class DynamicLineAndTimeSeriesChart extends JPanel implements ActionListe
     private JLabel ramAvail, inforRAMAvail;
     private JLabel ramUsed, infoRAMUsed;
 
-    /** Timer to refresh graph after every 1/4th of a second */
     private Timer timer = new Timer(250, this);
 
-    /**
-     * Constructs a new dynamic chart application.
-     *
-     * @param title  the frame title.
-     */
     public DynamicLineAndTimeSeriesChart(final String title) {
 
         this.cpuSeries = new TimeSeries("CPU usage(%)");
@@ -141,22 +131,12 @@ public class DynamicLineAndTimeSeriesChart extends JPanel implements ActionListe
         gbc.gridheight = 2;
         panel.add(percentPanel, gbc);
 
-
-//        panel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
-
         add(panel);
         setVisible(true);
         timer.start();
 
     }
 
-    /**
-     * Creates a sample chart.
-     *
-     * @param dataset  the dataset.
-     *
-     * @return A sample chart.
-     */
     private JFreeChart createChart(final XYDataset dataset) {
         final JFreeChart result = ChartFactory.createTimeSeriesChart(
                 null,
@@ -190,11 +170,7 @@ public class DynamicLineAndTimeSeriesChart extends JPanel implements ActionListe
 
         return result;
     }
-    /**
-     * Generates an random entry for a particular call made by time for every 1/4th of a second.
-     *
-     * @param e  the action event.
-     */
+
     public void actionPerformed(final ActionEvent e) {
 
         try {
@@ -209,7 +185,6 @@ public class DynamicLineAndTimeSeriesChart extends JPanel implements ActionListe
             this.infoThread.setText(String.valueOf(getNumOfThread()));
             this.infoCPUUsage.setText(String.valueOf(Math.round(cpuUasge)) + "%");
             this.infoRAMUsage.setText(String.valueOf(Math.round(ramUsage)) + "%");
-//            System.out.println(cpuUasge);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         } catch (InterruptedException interruptedException) {
